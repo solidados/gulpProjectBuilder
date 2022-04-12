@@ -48,6 +48,7 @@ function scripts() {
         .pipe(gulp.dest(paths.scripts.dest))
 }
 
+// It does not compile everything but only the edited ones. I.e.: if you chnaged styles only – it will compile styles, if scripts - then scripts... 
 function watch() {
     gulp.watch(paths.styles.src, styles)
     gulp.watch(paths.scripts.src, scripts)
