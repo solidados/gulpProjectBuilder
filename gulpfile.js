@@ -9,6 +9,7 @@ const sourcemaps = require('gulp-sourcemaps')
 const autoprefixer = require('gulp-autoprefixer')
 const imagemin = require('gulp-imagemin')
 const htmlmin = require('gulp-htmlmin')
+const size = require('gulp-size')
 const del = require('del')
 const { deserialize } = require('v8')
 const { dest } = require('vinyl-fs')
@@ -43,6 +44,9 @@ function clean() {
 function html() {
     return gulp.src(paths.html.src)
         .pipe(htmlmin({ coollapseWhitespace: true }))
+        .pipe(size({
+            showFiles: true
+        }))
         .pipe(gulp.dest(paths.html.dest));
 }
 
@@ -58,10 +62,13 @@ function styles() {
             level: 2
         })) //this plugin will minify the code by deleting spaces, unnecessary punctuation charachters, paragraphs etc.
         .pipe(rename({
-            basename: 'main',
+            basename: 'style',
             suffix: '.min'
         }))
         .pipe(sourcemaps.write('.'))
+        .pipe(size({
+            showFiles: true
+        }))
         .pipe(gulp.dest(paths.styles.dest))
 }
 
@@ -75,6 +82,9 @@ function scripts() {
         .pipe(uglify())
         .pipe(concat('main.min.js'))
         .pipe(sourcemaps.write('.'))
+        .pipe(size({
+            showFiles: true
+        }))
         .pipe(gulp.dest(paths.scripts.dest))
 }
 
@@ -92,6 +102,9 @@ function img() {
                 ]
             })
         ]))
+        .pipe(size({
+            showFiles: true
+        }))
         .pipe(gulp.dest(paths.images.dest))
 }
 // It does not compile everything but only the edited ones. I.e.: if you chnaged styles only – it will compile styles, if scripts - then scripts... 
