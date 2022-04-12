@@ -38,6 +38,11 @@ function watch() {
     gulp.watch(paths.styles.src, styles)
 }
 
+
+const build = gulp.series(clean, styles, watch) // .series allows tasks in brackets to run consistently
+
 exports.clean = clean
 exports.styles = styles
 exports.watch = watch
+exports.build = build // task is called with <$ gulp build>
+exports.default = build // task on default is called with <$ gulp>
