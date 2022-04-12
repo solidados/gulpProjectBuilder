@@ -20,4 +20,12 @@ function clean() {
     return del(['dist'])
 }
 
+// universal paths for styles and scripts
+function styles() {
+    return gulp.src(paths.styles.src)
+        .pipe(less())
+        .pipe(gulp.dest(paths.styles.dest))
+}
+
 exports.clean = clean
+exports.styles = styles
