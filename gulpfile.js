@@ -7,7 +7,10 @@ const uglify = require('gulp-uglify')
 const concat = require('gulp-concat')
 const sourcemaps = require('gulp-sourcemaps')
 const autoprefixer = require('gulp-autoprefixer')
+const imagemin = require('gulp-imagemin')
 const del = require('del')
+const { deserialize } = require('v8')
+const { dest } = require('vinyl-fs')
 
 
 // building folders structure
@@ -19,6 +22,10 @@ const paths = {
     scripts: {
         src: 'src/scripts/**/*.js',
         dest: 'dist/js/'
+    },
+    images: {
+        src: 'src/img/*',
+        dest: 'dist/img'
     }
 }
 
@@ -59,6 +66,13 @@ function scripts() {
         .pipe(gulp.dest(paths.scripts.dest))
 }
 
+// imagemin function
+
+function img() {
+    return gulp.src(paths.images.src)
+        .pipe(imagemin())
+        .pipe(gulp.dest(paths.images.dest))
+}
 // It does not compile everything but only the edited ones. I.e.: if you chnaged styles only – it will compile styles, if scripts - then scripts... 
 function watch() {
     gulp.watch(paths.styles.src, styles)
@@ -66,9 +80,10 @@ function watch() {
 }
 
 // builder for tasks to flow in described order
-const build = gulp.series(clean, gulp.parallel(styles, scripts), watch) // .series allows tasks in brackets to run consistently
+const build = gulp.series(clean, gulp.parallel(styles, scripts, img), watch) // .series allows tasks in brackets to run consistently
 
 exports.clean = clean
+exports.img = img
 exports.styles = styles
 exports.scripts = scripts
 exports.watch = watch
