@@ -23,6 +23,7 @@
     "homepage": "https://github.com/solidados/gulpProjectBuilder#readme",
     "devDependencies": {
         "@babel/core": "^7.17.9",
+        "@babel/preset-env": "^7.16.11",
         "browser-sync": "^2.27.9",
         "del": "^6.0.0",
         "gulp": "^4.0.2",
