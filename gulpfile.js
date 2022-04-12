@@ -5,6 +5,8 @@ const cleanCSS = require('gulp-clean-css')
 const babel = require('gulp-babel')
 const uglify = require('gulp-uglify')
 const concat = require('gulp-concat')
+const sourcemaps = require('gulp-sourcemaps')
+const autoprefixer = require('gulp-autoprefixer')
 const del = require('del')
 
 
@@ -28,23 +30,32 @@ function clean() {
 // universal paths for styles and scripts
 function styles() {
     return gulp.src(paths.styles.src)
+        .pipe(sourcemaps.init())
         .pipe(less())
-        .pipe(cleanCSS()) //this plugin will minify the code by deleting spaces, unnecessary punctuation charachters, paragraphs etc.
+        .pipe(autoprefixer({
+            cascade: false
+        }))
+        .pipe(cleanCSS({
+            level: 2
+        })) //this plugin will minify the code by deleting spaces, unnecessary punctuation charachters, paragraphs etc.
         .pipe(rename({
             basename: 'main',
             suffix: '.min'
         }))
+        .pipe(sourcemaps.write())
         .pipe(gulp.dest(paths.styles.dest))
 }
 
 // Task for script processing
 function scripts() {
-    return gulp.src(paths.scripts.src, {
-            sourcemaps: true
-        })
-        .pipe(babel())
+    return gulp.src(paths.scripts.src)
+        .pipe(sourcemaps.init())
+        .pipe(babel({
+            presets: ['@babell/env']
+        }))
         .pipe(uglify())
         .pipe(concat('main.min.js'))
+        .pipe(sourcemaps.write())
         .pipe(gulp.dest(paths.scripts.dest))
 }
 
