@@ -4,7 +4,7 @@
 > $ node --version  
 > $ npm --version  
 > $ npx --version  
-<i>If it is missing or requires to update, do so via Command line.</i>
+<i>If it is missing or requires to update, do so via Command line.</i>  
 2. Install Gulp Command Line Utility <i>'gulp-cli'</i> globaly:  
 > $ npm install --global gulp-cli  
 3. Create a project directory and navigate into it  
