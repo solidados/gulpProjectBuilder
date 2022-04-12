@@ -66,11 +66,20 @@ function scripts() {
         .pipe(gulp.dest(paths.scripts.dest))
 }
 
-// imagemin function
-
+// imagemin function - shows image optimization and parameters of minimization
 function img() {
     return gulp.src(paths.images.src)
-        .pipe(imagemin())
+        .pipe(imagemin([
+            imagemin.gifsicle({ interlaced: true }),
+            imagemin.mozjpeg({ quality: 75, progressive: true }),
+            imagemin.optipng({ optimizationLevel: 5 }),
+            imagemin.svgo({
+                plugins: [
+                    { removeViewBox: true },
+                    { cleanupIDs: false }
+                ]
+            })
+        ]))
         .pipe(gulp.dest(paths.images.dest))
 }
 // It does not compile everything but only the edited ones. I.e.: if you chnaged styles only – it will compile styles, if scripts - then scripts... 
