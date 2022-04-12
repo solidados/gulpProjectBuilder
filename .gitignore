@@ -1,1 +1,7 @@
-node_modules
+# folders to be ignored. These folders will be generated automaticaly.
+/node_modules
+/dist
+
+# files to be ignored
+package-lock.json
+.DS_Store
