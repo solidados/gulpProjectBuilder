@@ -1,0 +1,24 @@
+{
+  "name": "gulpprojectbuilder",
+  "version": "1.0.0-2022",
+  "description": "This repo was created for Gulp task manager to automate & enhance your work flow",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/solidados/gulpProjectBuilder.git"
+  },
+  "keywords": [
+    "gulp",
+    "builder",
+    "project"
+  ],
+  "author": "solidados",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/solidados/gulpProjectBuilder/issues"
+  },
+  "homepage": "https://github.com/solidados/gulpProjectBuilder#readme"
+}
