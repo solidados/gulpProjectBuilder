@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/solidados/gulpProjectBuilder/issues"
   },
-  "homepage": "https://github.com/solidados/gulpProjectBuilder#readme"
+  "homepage": "https://github.com/solidados/gulpProjectBuilder#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2"
+  }
 }
