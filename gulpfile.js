@@ -39,9 +39,7 @@ function clean() {
     return del(['dist'])
 }
 
-// task for minify html syntax
-gulp.task('minify', )
-
+// function for minify html syntax
 function html() {
     return gulp.src(paths.html.src)
         .pipe(htmlmin({ coollapseWhitespace: true }))
@@ -103,7 +101,7 @@ function watch() {
 }
 
 // builder for tasks to flow in described order
-const build = gulp.series(clean, gulp.parallel(styles, scripts, img), watch) // .series allows tasks in brackets to run consistently
+const build = gulp.series(clean, html, gulp.parallel(styles, scripts, img), watch) // .series allows tasks in brackets to run consistently
 
 exports.clean = clean
 exports.img = img
