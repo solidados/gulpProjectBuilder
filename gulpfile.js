@@ -34,11 +34,19 @@ function styles() {
         .pipe(gulp.dest(paths.styles.dest))
 }
 
+// Task for script processing
+function scripts() {
+    return gulp.src(paths.scripts.src, {
+            sourcemaps: true
+        })
+        .pipe(babel())
+}
+
 function watch() {
     gulp.watch(paths.styles.src, styles)
 }
 
-
+// builder for tasks flow
 const build = gulp.series(clean, styles, watch) // .series allows tasks in brackets to run consistently
 
 exports.clean = clean
