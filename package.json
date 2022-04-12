@@ -1,28 +1,39 @@
 {
-  "name": "gulpprojectbuilder",
-  "version": "1.0.0-2022",
-  "description": "This repo was created for Gulp task manager to automate & enhance your work flow",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/solidados/gulpProjectBuilder.git"
-  },
-  "keywords": [
-    "gulp",
-    "builder",
-    "project"
-  ],
-  "author": "solidados",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/solidados/gulpProjectBuilder/issues"
-  },
-  "homepage": "https://github.com/solidados/gulpProjectBuilder#readme",
-  "devDependencies": {
-    "gulp": "^4.0.2",
-    "gulp-less": "^5.0.0"
-  }
+    "name": "gulpprojectbuilder",
+    "version": "1.0.0-2022",
+    "description": "This repo was created for Gulp task manager to automate & enhance your work flow",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/solidados/gulpProjectBuilder.git"
+    },
+    "keywords": [
+        "gulp",
+        "builder",
+        "project"
+    ],
+    "author": "solidados",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/solidados/gulpProjectBuilder/issues"
+    },
+    "homepage": "https://github.com/solidados/gulpProjectBuilder#readme",
+    "devDependencies": {
+        "browser-sync": "^2.27.9",
+        "del": "^6.0.0",
+        "gulp": "^4.0.2",
+        "gulp-autoprefixer": "^8.0.0",
+        "gulp-clean-css": "^4.3.0",
+        "gulp-concat": "^2.6.1",
+        "gulp-imagemin": "^8.0.0",
+        "gulp-less": "^5.0.0",
+        "gulp-rename": "^2.0.0",
+        "gulp-sass": "^5.1.0",
+        "gulp-sourcemaps": "^3.0.0",
+        "gulp-stylus": "^2.7.1",
+        "gulp-uglify": "^3.0.2"
+    }
 }

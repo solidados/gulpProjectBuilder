@@ -18,4 +18,8 @@
 6. Verify your gulp versions  
 > $ gulp --version  
 
+During installation of all necessary packages please mind '-D' in each command line.  
+// Whatsoever is required for website working properly - install in "dependencies"
+// Whatsoever is required for developing process - install in "devDependencies"
+
 
