@@ -1,7 +1,9 @@
 const gulp = require('gulp')
 const less = require('gulp-less')
-const del = require('del')
+const rename = require('gulp-rename')
 const cleanCSS = require('gulp-clean-css')
+const del = require('del')
+
 
 // building folders structure
 const paths = {
@@ -24,8 +26,15 @@ function clean() {
 function styles() {
     return gulp.src(paths.styles.src)
         .pipe(less())
+        .pipe(cleanCSS()) //this plugin will minify the code by deleting spaces, unnecessary punctuation charachters, paragraphs etc.
+        .pipe(rename({
+            basename: 'main',
+            suffix: '.min'
+        }))
         .pipe(gulp.dest(paths.styles.dest))
 }
+
+function
 
 exports.clean = clean
 exports.styles = styles
