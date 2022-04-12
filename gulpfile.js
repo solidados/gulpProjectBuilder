@@ -2,6 +2,9 @@ const gulp = require('gulp')
 const less = require('gulp-less')
 const rename = require('gulp-rename')
 const cleanCSS = require('gulp-clean-css')
+const babel = require('gulp-babel')
+const uglify = require('gulp-uglify')
+const concat = require('gulp-concat')
 const del = require('del')
 
 
@@ -40,17 +43,22 @@ function scripts() {
             sourcemaps: true
         })
         .pipe(babel())
+        .pipe(uglify())
+        .pipe(concat('main.min.js'))
+        .pipe(gulp.dest(paths.scripts.dest))
 }
 
 function watch() {
     gulp.watch(paths.styles.src, styles)
+    gulp.watch(paths.scripts.src, scripts)
 }
 
-// builder for tasks flow
-const build = gulp.series(clean, styles, watch) // .series allows tasks in brackets to run consistently
+// builder for tasks to flow in described order
+const build = gulp.series(clean, gulp.parallel(styles, scripts), watch) // .series allows tasks in brackets to run consistently
 
 exports.clean = clean
 exports.styles = styles
+exports.scripts = scripts
 exports.watch = watch
 exports.build = build // task is called with <$ gulp build>
 exports.default = build // task on default is called with <$ gulp>
