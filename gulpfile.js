@@ -32,7 +32,7 @@ const paths = {
         dest: 'dist/js/'
     },
     images: {
-        src: 'src/img/*',
+        src: 'src/img/**',
         dest: 'dist/img'
     }
 }
@@ -125,6 +125,7 @@ function watch() {
     gulp.watch(paths.html.src, html)
     gulp.watch(paths.styles.src, styles)
     gulp.watch(paths.scripts.src, scripts)
+    gulp.watch(paths.images.src, img)
 }
 
 // builder for tasks to flow in described order
