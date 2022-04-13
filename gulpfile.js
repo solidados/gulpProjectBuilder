@@ -138,4 +138,4 @@ exports.styles = styles
 exports.scripts = scripts
 exports.watch = watch
 exports.build = build // task is called with <$ gulp build>
-exports.default = build // task on default is called with <$ gulp>
+exports.default = build //! task on default is called with <$ gulp>
