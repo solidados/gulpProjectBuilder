@@ -50,8 +50,8 @@ function html() {
         .pipe(size({
             showFiles: true
         }))
-        .pipe(gulp.dest(paths.html.dest));
-    .pipe(browserSync.stream())
+        .pipe(gulp.dest(paths.html.dest))
+        .pipe(browserSync.stream())
 }
 
 // universal paths for styles and scripts
