@@ -118,10 +118,11 @@ function img() {
 function watch() {
     browserSync.init({
         server: {
-            baseDir: './src/'
+            baseDir: './dist/'
         }
     })
-    gulp.watch(paths.html.src).on('change', browserSync.reload)
+    gulp.watch(paths.html.dest).on('change', browserSync.reload)
+    gulp.watch(paths.html.src, html)
     gulp.watch(paths.styles.src, styles)
     gulp.watch(paths.scripts.src, scripts)
 }
