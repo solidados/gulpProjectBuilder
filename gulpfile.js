@@ -36,8 +36,9 @@ const paths = {
 }
 
 // function to clean /dist folder
+// Exclusion: by adding '!dist/img' into array allows to clean /dist excluding (!) /img and its content.
 function clean() {
-    return del(['dist'])
+    return del(['dist/*', '!dist/img'])
 }
 
 // function for minify html syntax
