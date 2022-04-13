@@ -11,6 +11,7 @@ const imagemin = require('gulp-imagemin')
 const htmlmin = require('gulp-htmlmin')
 const size = require('gulp-size')
 const newer = require('gulp-newer')
+const browserSync = require('browser-sync').create()
 const del = require('del')
 const { deserialize } = require('v8')
 const { dest } = require('vinyl-fs')
@@ -50,6 +51,7 @@ function html() {
             showFiles: true
         }))
         .pipe(gulp.dest(paths.html.dest));
+    .pipe(browserSync.stream())
 }
 
 // universal paths for styles and scripts
@@ -72,6 +74,7 @@ function styles() {
             showFiles: true
         }))
         .pipe(gulp.dest(paths.styles.dest))
+        .pipe(browserSync.stream())
 }
 
 // Task for script processing
@@ -88,6 +91,7 @@ function scripts() {
             showFiles: true
         }))
         .pipe(gulp.dest(paths.scripts.dest))
+        .pipe(browserSync.stream())
 }
 
 // imagemin function - shows image optimization and parameters of minimization
@@ -112,6 +116,12 @@ function img() {
 }
 // It does not compile everything but only the edited ones. I.e.: if you chnaged styles only – it will compile styles, if scripts - then scripts... 
 function watch() {
+    browserSync.init({
+        server: {
+            baseDir: './src/'
+        }
+    })
+    gulp.watch(paths.html.src).on('change', browserSync.reload)
     gulp.watch(paths.styles.src, styles)
     gulp.watch(paths.scripts.src, scripts)
 }
