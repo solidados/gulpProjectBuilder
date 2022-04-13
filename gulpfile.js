@@ -12,6 +12,7 @@ const htmlmin = require('gulp-htmlmin')
 const size = require('gulp-size')
 const newer = require('gulp-newer')
 const browserSync = require('browser-sync').create()
+    // const gulppug = require('gulp-pug') // html pre-processor pug
 const del = require('del')
 const { deserialize } = require('v8')
 const { dest } = require('vinyl-fs')
@@ -19,9 +20,13 @@ const { dest } = require('vinyl-fs')
 
 // building folders structure
 const paths = {
+    // pug: {
+    //     src: 'src/*.pug',
+    //     dest: 'dist/'
+    // },
     html: {
         src: 'src/*.html',
-        dest: 'dist'
+        dest: 'dist/'
     },
     styles: {
         src: 'src/styles/**/*.less',
@@ -33,7 +38,7 @@ const paths = {
     },
     images: {
         src: 'src/img/**',
-        dest: 'dist/img'
+        dest: 'dist/img/'
     }
 }
 
@@ -42,6 +47,17 @@ const paths = {
 function clean() {
     return del(['dist/*', '!dist/img'])
 }
+
+// function for html pre-processor pug
+// function pug() {
+//     return gulp.src(paths.pug.src)
+//         .pipe(gulppug())
+//         .pipe(size({
+//             showFiles: true
+//         }))
+//         .pipe(gulp.dest(paths.pug.dest))
+//         .pipe(browserSync.stream())
+// }
 
 // function for minify html syntax
 function html() {
@@ -123,16 +139,19 @@ function watch() {
     })
     gulp.watch(paths.html.dest).on('change', browserSync.reload)
     gulp.watch(paths.html.src, html)
+        // gulp.watch(paths.pug.src, pug) // to be commented in case of lack of need
     gulp.watch(paths.styles.src, styles)
     gulp.watch(paths.scripts.src, scripts)
     gulp.watch(paths.images.src, img)
 }
 
 // builder for tasks to flow in described order
+// here, instead of html you may switch and plug in pre-processor pug <i.e.: html => pug> and all files in src/*.pug will be processed as *.html in dist/
 const build = gulp.series(clean, html, gulp.parallel(styles, scripts, img), watch) // .series allows tasks in brackets to run consistently
 
 exports.clean = clean
 exports.img = img
+    // exports.pug = pug // html pre-processor pug
 exports.html = html
 exports.styles = styles
 exports.scripts = scripts
