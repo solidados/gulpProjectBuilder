@@ -10,6 +10,7 @@ const autoprefixer = require('gulp-autoprefixer')
 const imagemin = require('gulp-imagemin')
 const htmlmin = require('gulp-htmlmin')
 const size = require('gulp-size')
+const newer = require('gulp-newer')
 const del = require('del')
 const { deserialize } = require('v8')
 const { dest } = require('vinyl-fs')
@@ -92,6 +93,7 @@ function scripts() {
 // imagemin function - shows image optimization and parameters of minimization
 function img() {
     return gulp.src(paths.images.src)
+        .pipe(newer(paths.images.dest))
         .pipe(imagemin([
             imagemin.gifsicle({ interlaced: true }),
             imagemin.mozjpeg({ quality: 75, progressive: true }),
