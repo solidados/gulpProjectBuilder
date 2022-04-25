@@ -1,11 +1,14 @@
 # folders to be ignored. These folders will be generated automaticaly.
 node_modules/
 dist/
+.DS_Store/
+.vscode/
 
 # files to be ignored
 package-lock.json
-.DS_Store/
-.vscode/
+README.md
+stage-1.md
+
 
 # https://github.com/sugrevinVitalii/gitignore_iksergey/blob/main/gitignore.txt
 ## Ignore Visual Studio temporary files, build results, and
