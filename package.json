@@ -26,11 +26,13 @@
         "@babel/preset-env": "^7.16.11",
         "browser-sync": "^2.27.9",
         "del": "^6.0.0",
+        "glob-parent": "^5.1.2",
         "gulp": "^4.0.2",
         "gulp-autoprefixer": "^8.0.0",
         "gulp-babel": "^8.0.0",
         "gulp-clean-css": "^4.3.0",
         "gulp-concat": "^2.6.1",
+        "gulp-htmlmin": "^5.0.1",
         "gulp-imagemin": "^8.0.0",
         "gulp-less": "^5.0.0",
         "gulp-newer": "^1.4.0",
@@ -40,6 +42,7 @@
         "gulp-size": "^4.0.1",
         "gulp-sourcemaps": "^3.0.0",
         "gulp-stylus": "^2.7.1",
-        "gulp-uglify": "^3.0.2"
+        "gulp-uglify": "^3.0.2",
+        "semver-regex": "^3.1.3"
     }
 }
