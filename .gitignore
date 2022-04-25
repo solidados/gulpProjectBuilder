@@ -6,8 +6,7 @@ dist/
 
 # files to be ignored
 package-lock.json
-README.md
-stage-1.md
+
 
 
 # https://github.com/sugrevinVitalii/gitignore_iksergey/blob/main/gitignore.txt
